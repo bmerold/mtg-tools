@@ -1,11 +1,11 @@
 package com.merold.magictools.manabase;
 
-import com.merold.magictools.Deck;
-import com.merold.magictools.DeckFactory;
-import com.merold.magictools.Game;
-import com.merold.magictools.GameBuilder;
-import com.merold.magictools.Player;
-import com.merold.magictools.PlayerFactory;
+import com.merold.magictools.game.Game;
+import com.merold.magictools.game.GameBuilder;
+import com.merold.magictools.player.Player;
+import com.merold.magictools.player.PlayerFactory;
+import com.merold.magictools.zones.Deck;
+import com.merold.magictools.zones.DeckFactory;
 
 public class Test {
 	
@@ -13,7 +13,7 @@ public class Test {
 		Deck deck = DeckFactory.createDeck(100);
 		Player player = PlayerFactory.createPlayer("Brett", deck);
 		GameBuilder gameBuilder = new GameBuilder();
-		Game game = gameBuilder.addPlayer(player).createGame();
+		Game game = gameBuilder.addPlayer(player).setNumTurns(4).createGame();
 		game.start();
 		
 	}

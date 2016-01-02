@@ -3,9 +3,10 @@ package com.merold.magictools.manabase;
 import java.util.Random;
 import java.util.SortedMap;
 import java.util.TreeMap;
-import com.merold.magictools.Game;
-import com.merold.magictools.Player;
-import com.merold.magictools.TurnOrder;
+
+import com.merold.magictools.game.Game;
+import com.merold.magictools.game.TurnOrder;
+import com.merold.magictools.player.Player;
 
 public class GameStartHandler {
 	
