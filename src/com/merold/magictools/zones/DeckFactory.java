@@ -8,9 +8,9 @@ public class DeckFactory {
 		Deck deck = new DeckImpl();
 		for (int i = 0; i < size; i++) {
 			if (i<39) {
-				deck.add(CardFactory.createCard("Forest"));
+				deck.add(CardFactory.createCard("Forest", "Basic Land — Forest"));
 			} else {
-				deck.add(CardFactory.createCard("Spell"));
+				deck.add(CardFactory.createCard("Spell", ""));
 			}
 		}
 		return deck;

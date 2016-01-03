@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.merold.magictools.object.Card;
+import com.merold.magictools.player.Player;
 
 public class DeckImpl extends Zone implements Deck {
 	
@@ -32,6 +33,14 @@ public class DeckImpl extends Zone implements Deck {
 	@Override
 	public int size() {
 		return deck.size();
+	}
+
+	@Override
+	public void setOwner(Player owner) {
+		for (Card card : deck) {
+			card.setOwner(owner);
+		}
+		
 	}
 
 }

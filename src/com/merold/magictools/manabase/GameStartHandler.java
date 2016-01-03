@@ -20,15 +20,24 @@ public class GameStartHandler {
 		System.out.println("Starting game.");
 		System.out.println("Each player shuffles their decks");
 		shuffleDecks();
+		initializeLibraries();
 		System.out.println("Determine which player chooses to go first or draw.");
 		Player first = determineFirst();
 		TurnOrder turnOrder = first.chooseTurnOrder();
 		System.out.println("Player " + first.getName() + " has chosen " + turnOrder + ".");
 		System.out.println("Players draw starting hands.");
+		game.setStartingPlayer(first);
+		game.setTurnOrder();
 		drawStartingHands();
 		showHands();
 	}
 	
+	private void initializeLibraries() {
+		for (Player player : game.getPlayers()) {
+			player.initializeLibrary();
+		}
+	}
+
 	private void showHands() {
 		for (Player player : game.getPlayers()) {
 			player.revealHand();

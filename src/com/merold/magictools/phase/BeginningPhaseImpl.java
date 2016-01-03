@@ -1,5 +1,6 @@
 package com.merold.magictools.phase;
 
+import com.merold.magictools.game.Game;
 import com.merold.magictools.step.DrawStep;
 import com.merold.magictools.step.DrawStepImpl;
 import com.merold.magictools.step.UntapStep;
@@ -13,10 +14,11 @@ public class BeginningPhaseImpl extends PhaseImpl implements BeginningPhase {
 	private UpkeepStep upkeep;
 	private DrawStep draw;
 	
-	public BeginningPhaseImpl() {
-		untap = new UntapStepImpl();
-		upkeep = new UpkeepStepImpl();
-		draw = new DrawStepImpl();
+	public BeginningPhaseImpl(Game game) {
+		super(game);
+		untap = new UntapStepImpl(game);
+		upkeep = new UpkeepStepImpl(game);
+		draw = new DrawStepImpl(game);
 	}
 
 	@Override

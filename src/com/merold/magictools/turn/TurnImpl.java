@@ -2,6 +2,7 @@ package com.merold.magictools.turn;
 
 import java.util.List;
 
+import com.merold.magictools.game.Game;
 import com.merold.magictools.phase.BeginningPhase;
 import com.merold.magictools.phase.BeginningPhaseImpl;
 import com.merold.magictools.phase.CombatPhase;
@@ -22,13 +23,14 @@ public class TurnImpl implements Turn {
 	private EndingPhase end;
 	private Player activePlayer;
 	private List<Player> players;
+	private Game game;
 	
-	public TurnImpl(List<Player> players, Player activePlayer) {
-		beginning = new BeginningPhaseImpl();
-		main = new MainPhaseImpl();
-		secondMain = new PostCombatMainPhaseImpl();
-		combat = new CombatPhaseImpl();
-		end = new EndingPhaseImpl();
+	public TurnImpl(Game game, List<Player> players, Player activePlayer) {
+		beginning = new BeginningPhaseImpl(game);
+		main = new MainPhaseImpl(game);
+		secondMain = new PostCombatMainPhaseImpl(game);
+		combat = new CombatPhaseImpl(game);
+		end = new EndingPhaseImpl(game);
 		this.players = players;
 		this.activePlayer = activePlayer;
 	}

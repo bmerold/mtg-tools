@@ -1,6 +1,13 @@
 package com.merold.magictools.step;
 
-public class DeclareAttackersStepImpl implements DeclareAttackersStep {
+import com.merold.magictools.game.Game;
+
+public class DeclareAttackersStepImpl extends StepImpl implements DeclareAttackersStep {
+
+	public DeclareAttackersStepImpl(Game game) {
+		super(game);
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public void start() {

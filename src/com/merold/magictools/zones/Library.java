@@ -2,8 +2,10 @@ package com.merold.magictools.zones;
 
 import com.merold.magictools.object.Card;
 
-public interface Hand {
-	public void put(Card card);
+public interface Library {
+	
+	public Card getTopCard();
 	public int count();
-	public String revealHand();
+	public void shuffle();
+
 }

@@ -17,4 +17,10 @@ public class TypeImpl implements Type {
 			this.types.add(type);
 		}
 	}
+
+	@Override
+	public boolean isType(TypeEnum type) {
+		return types.contains(type);
+		
+	}
 }

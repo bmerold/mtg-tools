@@ -1,5 +1,6 @@
 package com.merold.magictools.phase;
 
+import com.merold.magictools.game.Game;
 import com.merold.magictools.step.BeginngOfCombatStepImpl;
 import com.merold.magictools.step.BeginningOfCombatStep;
 import com.merold.magictools.step.CombatDamageStep;
@@ -18,12 +19,13 @@ public class CombatPhaseImpl extends PhaseImpl implements CombatPhase {
 	private CombatDamageStep damage;
 	private EndOfCombatStep end;
 	
-	public CombatPhaseImpl() {
-		begin = new BeginngOfCombatStepImpl();
-		attackers = new DeclareAttackersStepImpl();
-		blockers = new DeclareBlockersStepImpl();
-		damage = new CombatDamageStepImpl();
-		end = new EndOfCombatStepImpl();
+	public CombatPhaseImpl(Game game) {
+		super(game);
+		begin = new BeginngOfCombatStepImpl(game);
+		attackers = new DeclareAttackersStepImpl(game);
+		blockers = new DeclareBlockersStepImpl(game);
+		damage = new CombatDamageStepImpl(game);
+		end = new EndOfCombatStepImpl(game);
 	}
 
 	@Override

@@ -21,7 +21,8 @@ public class GameBuilder {
 	}
 	
 	public Game createGame() {
-		return new GameImpl(this.players, this.numTurns);
+		Game game = new GameImpl(this.players, this.numTurns);
+		return game;
 	}
 
 }

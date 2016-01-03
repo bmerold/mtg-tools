@@ -1,6 +1,13 @@
 package com.merold.magictools.step;
 
-public class UntapStepImpl implements UntapStep {
+import com.merold.magictools.game.Game;
+
+public class UntapStepImpl extends StepImpl implements UntapStep {
+
+	public UntapStepImpl(Game game) {
+		super(game);
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public void start() {

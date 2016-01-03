@@ -8,21 +8,17 @@ import com.merold.magictools.object.Card;
 public class HandImpl extends Zone implements Hand {
 
 	private List<Card> hand = new ArrayList<Card>();
-	private Deck deck;
-	private int startingHandSize;
 
-	public HandImpl(Deck deck, int startingHandSize) {
-		this.deck = deck;
-		this.startingHandSize = startingHandSize;
+	public HandImpl() {
 	}
 
 	@Override
-	public void draw() {
-		hand.add(deck.draw());
+	public void put(Card card) {
+		hand.add(card);
 	}
 
 	@Override
-	public int size() {
+	public int count() {
 		return hand.size();
 	}
 
@@ -33,12 +29,5 @@ public class HandImpl extends Zone implements Hand {
 			System.out.println("\t" + card.getName());
 		}
 		return sb.toString();
-	}
-
-	@Override
-	public void drawStartingHand() {
-		for (int i = 0; i < startingHandSize; i++) {
-			draw();
-		}
 	}
 }
