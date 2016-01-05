@@ -24,12 +24,11 @@ public class GameStartHandler {
 		System.out.println("Determine which player chooses to go first or draw.");
 		Player first = determineFirst();
 		TurnOrder turnOrder = first.chooseTurnOrder();
-		System.out.println("Player " + first.getName() + " has chosen " + turnOrder + ".");
+		System.out.println(first.getName() + " has chosen " + turnOrder + ".");
 		System.out.println("Players draw starting hands.");
 		game.setStartingPlayer(first);
 		game.setTurnOrder();
 		drawStartingHands();
-		showHands();
 	}
 	
 	private void initializeLibraries() {
@@ -69,8 +68,7 @@ public class GameStartHandler {
 		}
 		
 		Player first = rolls.get(rolls.lastKey());
-		System.out.println("Player " + first.getName() + " won the roll with a " + rolls.lastKey() + ".");
-		System.out.println("Player " + first.getName() + " gets to choose.");
+		System.out.println(first.getName() + " won the roll with a " + rolls.lastKey() + ".");
 		return first;
 	}
 

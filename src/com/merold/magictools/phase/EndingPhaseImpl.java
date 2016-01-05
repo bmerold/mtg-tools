@@ -15,10 +15,13 @@ public class EndingPhaseImpl extends PhaseImpl implements EndingPhase {
 		super(game);
 		end = new EndStepImpl(game);
 		cleanup = new CleanupStepImpl(game);
+		phaseName = "ending";
 	}
 
 	@Override
 	public void start() {
+		System.out.println("Starting the ending phase.");
+		game.setCurrentPhase(this);
 		end.start();
 		cleanup.start();
 		

@@ -26,15 +26,19 @@ public class CombatPhaseImpl extends PhaseImpl implements CombatPhase {
 		blockers = new DeclareBlockersStepImpl(game);
 		damage = new CombatDamageStepImpl(game);
 		end = new EndOfCombatStepImpl(game);
+		phaseName = "combat";
 	}
 
 	@Override
 	public void start() {
+		System.out.println("Starting the combat phase.");
+		game.setCurrentPhase(this);
 		begin.start();
 		attackers.start();
-		blockers.start();
-		damage.start();
+		if (game.areThereAttackers()) {
+			blockers.start();
+			damage.start();
+		}
 		end.start();
-		
 	}
 }

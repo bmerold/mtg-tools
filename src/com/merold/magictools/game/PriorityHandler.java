@@ -21,16 +21,16 @@ public class PriorityHandler {
 	}
 
 	public void passPriority(Player currentPlayer) {
-		System.out.println("Player " + currentPlayer.getName() + " passes priority.");
 		priority.setOwner(null);
 		consecutivePasses++;
 		
 		/* Only give the next player priority if they haven't passed already. */
 		if(consecutivePasses < game.getPlayers().size()) {
 			Player nextPlayer = getNextPlayer(currentPlayer);
-			System.out.println("Player " + nextPlayer.getName() + " receives priority.");
+			System.out.println(currentPlayer.getName() + " passes priority to " + nextPlayer.getName() + ".");
 			nextPlayer.receivePriority(priority);
 		} else {
+			System.out.println(currentPlayer.getName() + " passes, all players have passed priority.");
 			game.resolve();
 		}
 	}

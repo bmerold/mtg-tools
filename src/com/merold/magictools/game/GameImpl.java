@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.merold.magictools.action.Action;
 import com.merold.magictools.manabase.GameStartHandler;
+import com.merold.magictools.phase.MainPhase;
 import com.merold.magictools.phase.Phase;
 import com.merold.magictools.player.Player;
 import com.merold.magictools.step.Step;
@@ -69,16 +70,11 @@ public class GameImpl implements Game {
 			for (int i = 1; i <= numTurns; i++) {
 				for (Player player : players) {
 					this.activePlayer = player;
-					System.out.println(player.getName() + " is starting their turn " + i);
+					System.out.println(player.getName() + " is starting their turn " + i + ".");
 					Turn turn = new TurnImpl(this, players, activePlayer);
 					turn.play();
 				}
 			}
-		}
-		
-		//Testing purposes
-		for (Player player : players) {
-			player.revealHand();
 		}
 	}
 	
@@ -149,7 +145,22 @@ public class GameImpl implements Game {
 	@Override
 	public void resolve() {
 		if (stack == null || stack.isStackEmpty()) {
-			currentStep.end();
+			if (currentPhase instanceof MainPhase) {
+				currentPhase.end();
+			} else {
+				currentStep.end();
+			}
 		}
+	}
+
+	@Override
+	public boolean areThereAttackers() {
+		return false;
+	}
+
+	@Override
+	public void declareAttackers() {
+		activePlayer.declareAttackers();
+		
 	}
 }

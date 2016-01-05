@@ -19,15 +19,16 @@ public class BeginningPhaseImpl extends PhaseImpl implements BeginningPhase {
 		untap = new UntapStepImpl(game);
 		upkeep = new UpkeepStepImpl(game);
 		draw = new DrawStepImpl(game);
+		phaseName = "beginning";
 	}
 
 	@Override
 	public void start() {
+		System.out.println("Starting the beginning phase.");
+		this.game.setCurrentPhase(this);
 		untap.start();
 		upkeep.start();
 		draw.start();
+		end();
 	}
-	
-	
-
 }

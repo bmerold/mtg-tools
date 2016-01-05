@@ -130,4 +130,9 @@ public class PlayerImpl implements Player {
 		this.game = game;
 	}
 
+	@Override
+	public void declareAttackers() {
+		System.out.println(name + " declares no attackers.");
+	}
+
 }

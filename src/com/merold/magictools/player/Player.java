@@ -20,4 +20,5 @@ public interface Player extends Comparable<Player>{
 	public void receivePriority(Priority priority);
 	public void passPriority();
 	public void joinGame(Game game);
+	public void declareAttackers();
 }

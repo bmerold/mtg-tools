@@ -6,13 +6,15 @@ public class UntapStepImpl extends StepImpl implements UntapStep {
 
 	public UntapStepImpl(Game game) {
 		super(game);
-		// TODO Auto-generated constructor stub
+		name = "untap";
 	}
 
 	@Override
 	public void start() {
-		// TODO Auto-generated method stub
-		
+		setCurrentStep();
+		System.out.println("Starting the untap step.");
+		System.out.println(game.getActivePlayer().getName() + " untaps their permanents.");
+		game.resolve();
 	}
 
 }

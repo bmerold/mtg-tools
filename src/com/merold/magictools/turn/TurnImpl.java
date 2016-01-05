@@ -11,14 +11,14 @@ import com.merold.magictools.phase.EndingPhase;
 import com.merold.magictools.phase.EndingPhaseImpl;
 import com.merold.magictools.phase.MainPhase;
 import com.merold.magictools.phase.MainPhaseImpl;
-import com.merold.magictools.phase.PostCombatMainPhaseImpl;
+import com.merold.magictools.phase.MainPhaseType;
 import com.merold.magictools.player.Player;
 
 public class TurnImpl implements Turn {
 
 	private BeginningPhase beginning;
-	private MainPhase main;
-	private MainPhase secondMain;
+	private MainPhase preCombatMain;
+	private MainPhase postCombatMain;
 	private CombatPhase combat;
 	private EndingPhase end;
 	private Player activePlayer;
@@ -27,8 +27,8 @@ public class TurnImpl implements Turn {
 	
 	public TurnImpl(Game game, List<Player> players, Player activePlayer) {
 		beginning = new BeginningPhaseImpl(game);
-		main = new MainPhaseImpl(game);
-		secondMain = new PostCombatMainPhaseImpl(game);
+		preCombatMain = new MainPhaseImpl(game, MainPhaseType.PRECOMBAT);
+		postCombatMain = new MainPhaseImpl(game, MainPhaseType.POSTCOMBAT);
 		combat = new CombatPhaseImpl(game);
 		end = new EndingPhaseImpl(game);
 		this.players = players;
@@ -38,14 +38,11 @@ public class TurnImpl implements Turn {
 	@Override
 	public void play() {
 		beginning.start();
-		beginning.end(players);
-		main.start();
-		main.end(players);
+		preCombatMain.start();
 		combat.start();
-		combat.end(players);
-		secondMain.start();
-		secondMain.end(players);
+		combat.end();
+		postCombatMain.start();
 		end.start();
-		end.end(players);
+		end.end();
 	}
 }

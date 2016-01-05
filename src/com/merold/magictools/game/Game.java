@@ -22,4 +22,6 @@ public interface Game {
 	public Step getCurrentStep();
 	public void passPriority(Player player);
 	public void resolve();
+	public boolean areThereAttackers();
+	public void declareAttackers();
 }
