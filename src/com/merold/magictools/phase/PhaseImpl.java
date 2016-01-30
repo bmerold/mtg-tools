@@ -17,6 +17,10 @@ public abstract class PhaseImpl implements Phase {
 	public void end() {
 		System.out.println("Ending the " + phaseName + " phase.");
 		game.setCurrentPhase(null);
+		
+		for (Player player : game.getPlayers()) {
+			player.emptyManaPool();
+		}
 	}
 
 }
