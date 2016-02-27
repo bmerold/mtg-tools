@@ -13,15 +13,17 @@ import com.merold.magictools.step.Step;
 import com.merold.magictools.turn.Turn;
 import com.merold.magictools.turn.TurnImpl;
 import com.merold.magictools.zones.Battlefield;
+import com.merold.magictools.zones.BattlefieldFactory;
 import com.merold.magictools.zones.Command;
 import com.merold.magictools.zones.Exile;
 import com.merold.magictools.zones.Stack;
+import com.merold.magictools.zones.StackFactory;
 
 public class GameImpl implements Game {
 
 	/* Game's zones. */
-	private Battlefield battlefield;
-	private Stack stack;
+	private Battlefield battlefield = BattlefieldFactory.createBattlefield();
+	private Stack stack = StackFactory.createStack();
 	private Exile exile;
 	private Command command;
 	
@@ -33,23 +35,20 @@ public class GameImpl implements Game {
 	private int numTurns;
 	private Player activePlayer;
 	private Player startingPlayer;
-	private PriorityHandler priorityHandler;
+	private PriorityHandler priorityHandler = new PriorityHandler(this);
 	
 	public GameImpl(Player player) {
 		players.add(player);
 		numTurns = 0;
-		priorityHandler = new PriorityHandler(this);
 	}
 	
 	public GameImpl(Player player, int numTurns) {
 		players.add(player);
 		this.numTurns = numTurns;
-		priorityHandler = new PriorityHandler(this);
 	}
 	
 	public GameImpl(List<Player> players) {
 		this.players.addAll(players);
-		priorityHandler = new PriorityHandler(this);
 	}
 	
 	public GameImpl(List<Player> players, int numTurns) {
@@ -59,7 +58,6 @@ public class GameImpl implements Game {
 			player.joinGame(this);
 		}
 		this.numTurns = numTurns;
-		priorityHandler = new PriorityHandler(this);
 	}
 	
 	@Override

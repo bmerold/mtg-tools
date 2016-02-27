@@ -4,7 +4,7 @@ import com.merold.magictools.characteristics.Subtype;
 import com.merold.magictools.characteristics.Supertype;
 import com.merold.magictools.characteristics.Type;
 
-public interface Object {
+public interface MagicObject {
 	
 	public String getName();
 	
