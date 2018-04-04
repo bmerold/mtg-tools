@@ -10,4 +10,5 @@
 	<modules>
 		<module>mtg-rules-engine</module>
 	</modules>
+	<name>mtg-tools</name>
 </project>
